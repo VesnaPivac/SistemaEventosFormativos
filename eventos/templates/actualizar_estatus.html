@@ -1,0 +1,33 @@
+{% extends 'main.html' %}
+{% block content %}
+<h1>Propuesta Evento Formativo: {{evento.nombre}}</h1>
+<h2>Responsable: {{request.user.first_name}} {{request.user.last_name}}</h2>
+<h3>Tipo: {{evento.TipoEventos}}</h3>
+<h3>Modalidad: {{evento.modalidad}}</h3>
+<h3>Objetivos:</h3>
+<p>{{evento.objetivos}}</p>
+<h3>Contenido:</h3>
+<p>{{evento.contenido}}</p>
+<h3>Fecha de Inicio</h3>
+<p>{{evento.Fecha_de_Inicio}}</p>
+<h3>Fecha de Fin</h3>
+<p>{{evento.Fecha_de_Fin}}</p>
+
+<form action="" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" name="Submit">
+</form>
+
+<br>
+
+{% if request.user.rol == 'RESPONSABLE' %}
+<a href="{% url 'PropuestasEventosFormativos' %}">Regresar a Propuestas</a>
+{% elif request.user.is_superuser and request.user.rol != 'PARTICIPANTE' %}
+<a href="{% url 'AllPropuestas' %}">Regresar a Propuestas</a>
+{% else %}
+<a href="{% url 'AllEventos' %}">Regresar a Eventos</a>
+
+{% endif %}
+
+{% endblock %}

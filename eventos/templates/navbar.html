@@ -1,0 +1,78 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark p-3">
+    <a class="navbar-brand" href="{% url 'inicio' %}"><h2><i class="fas fa-graduation-cap"></i>UNISON</h2></a>
+    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+         {% if request.user.is_superuser %}
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'inicio' %}">Inicio</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'AllPropuestas' %}">Propuestas</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'AllEventos' %}">Eventos</a>
+            </li>
+        </ul>
+        {% endif %}
+        {% if request.user.rol == 'RESPONSABLE' %}
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'inicio' %}">Inicio</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'PropuestasEventosFormativos' %}">Tus Propuestas</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'AllEventos' %}">Eventos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'TusEventos' %}">Tus Eventos</a>
+            </li>
+        </ul>
+        {% endif %}
+        {% if request.user.rol == 'PARTICIPANTE' and request.user.is_superuser == False %}
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'inicio' %}">Inicio</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'AllEventos' %}">Eventos</a>
+            </li>
+        </ul>
+        {% endif %}
+        {% if request.user.rol == 'INSTRUCTOR'%}
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'inicio' %}">Inicio</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'AllEventos' %}">Eventos</a>
+            </li>
+        </ul>
+        {% endif %}
+    </div>
+    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+        <ul class="navbar-nav ml-auto">
+            <div class="dropdown">
+                <a class="dropdown-toggle user-wrapper text-white" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div><img src="{{request.user.imagen.url}}" style="width: 40px; height: 40px;" alt=""></div>
+                    <div><h4 class="text-white">{{request.user.username}}</h4>
+                    <small>
+                         {%if request.user.is_superuser %} 
+                                Consejo Divisional 
+                         {% else %} 
+                                {{request.user.rol}} 
+                         {% endif %}
+                    </small></div>
+                  </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                  <a class="dropdown-item" href="{% url 'ver_perfil' %}"><i class="fas fa-user m-2"></i>Ver Perfil</a>
+                  <a class="dropdown-item" href="{% url 'editar_perfil' %}"><i class="fas fa-cog m-2"></i>Editar Perfil</a>
+                  <a class="dropdown-item text-danger" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt m-2"></i>Cerrar Sesion</a>
+                </div>
+              </div>
+        </ul>
+    </div>
+    </div>
+
+</nav>

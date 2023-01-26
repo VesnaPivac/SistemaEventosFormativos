@@ -1,0 +1,15 @@
+{% extends 'main.html' %}
+{% block content %}
+<h2>Propuestas Eventos Formativos</h2>
+
+<h5>{{propuesta_count}} propuestas</h5>
+
+{% for propuesta in Propuestas %}
+<div>
+    {{propuesta.id}} -- <a href="{% url 'actualizarEstatus' propuesta.id %}">{{propuesta.nombre}}</a>
+
+    <hr>
+</div>
+{% endfor %}
+
+{% endblock %}

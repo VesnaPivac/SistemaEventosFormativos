@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestion de Eventos Formativos - UNISON</title>
+  <!--FONTAWESOME-->
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+  <!--Google Fonts-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+  <!--CSS CUSTOM -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+  <div class="flex-center-login">
+
+    <div class="container">
+      <div class="cover"></div>
+      <form method="POST" action="">
+        {% csrf_token %}
+        <div class="form-content">
+          <div class="login-form">
+            <div class="title">Login</div>
+            <div class="input-boxes">
+              <div class="input-box">
+                <i class="fas fa-user-circle"></i>
+                <input type="text" name="username" placeholder="Nombre de Usuario" class="form-control">
+              </div>
+              <div class="input-box">
+                <i class="fas fa-lock"></i>
+                <input type="password" name="password" placeholder="Contraseña" class="form-control">
+              </div>
+              <div class="text"><a href="#">Se te olvidó la contraseña?</a></div>
+              <div class="button input-box">
+                <input type="submit" value="Login">
+              </div>
+              {% for message in messages %}
+              <p id="messages" style="background-color:#cdcdcd;padding: 10px;
+              margin-top: 10px;">
+                {{message}}</p>
+              {% endfor %}
+              <div class="text login-text">Aún no tienes una cuenta? <a href="{% url 'registro' %}"> Regístrate</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,15 @@
+{% extends 'main.html' %}
+{% block content %}
+<h2>Eventos Formativos</h2>
+
+<h5>{{propuesta_count}} {% if propuesta_count < 2 %} Evento {% else %} Eventos {% endif %}</h5>
+
+{% for propuesta in Propuestas %}
+<div>
+    {{propuesta.id}} -- <a href="{% url 'Propuesta' propuesta.id %}">{{propuesta.nombre}}</a>
+    <hr>
+</div>
+{% endfor %}
+
+
+{% endblock %}

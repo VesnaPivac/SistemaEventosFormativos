@@ -1,0 +1,19 @@
+{% extends 'main.html' %}
+{% block content %}
+<h3>Editar Perfil</h3>
+
+<img src="{{request.user.imagen.url}}" style="width: 200px; height: 200px;" alt="">
+
+
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form.as_p}}
+
+    <input type="submit" name="Actualizar" id="">
+</form>
+
+
+<a href="{% url 'ver_perfil' %}">Ver Perfil</a>
+
+
+{% endblock %}

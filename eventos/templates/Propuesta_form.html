@@ -1,0 +1,84 @@
+{% extends 'main.html' %}
+{% block content %}
+<h1>Propuesta Form</h1>
+
+<form action="" method="POST">
+    {% csrf_token %}
+
+    {{form.nombre.label}}
+    {{form.nombre}}
+    <br>
+    {{form.TipoEventos.label}}
+    {{form.TipoEventos}}
+    <br>
+    {{form.modalidad.label}}
+    {{form.modalidad}}
+    <br>
+    {{form.objetivos.label}}
+    {{form.objetivos}}
+    <br>
+    {{form.experiencias.label}}
+    {{form.experiencias}}
+    <br>
+    {{form.contenido.label}}
+    {{form.contenido}}
+    <br>
+    {{form.recursos_y_materiales.label}}
+    {{form.recursos_y_materiales}}
+    <br>
+    {{form.Estrategias_de_Evaluacion.label}}
+    {{form.Estrategias_de_Evaluacion}}
+    <br>
+    {{form.Duracion_en_horas.label}}
+    {{form.Duracion_en_horas}}
+    <br>
+    {{form.Fecha_de_Inicio.label}}
+    {{form.Fecha_de_Inicio}}
+    <br>
+    {{form.Fecha_de_Fin.label}}
+    {{form.Fecha_de_Fin}}
+    <br>
+    {{form.Referencias_y_bibliografia.label}}
+    {{form.Referencias_y_bibliografia}}
+    <br>
+    {{form.Utilidad_y_Oportunidad_del_programa.label}}
+    {{form.Utilidad_y_Oportunidad_del_programa}}
+    <br>
+    {{form.Cupo_Maximo.label}}
+    {{form.Cupo_Maximo}}
+    <br>
+    {{form.Requisistos_de_Acreditacion.label}}
+    {{form.Requisistos_de_Acreditacion}}
+    <br>
+    {{form.Experiencia_y_pericia_de_Instructores.label}}
+    {{form.Experiencia_y_pericia_de_Instructores}}
+    <br>
+    {{form.Dirigido_a.label}}
+    {{form.Dirigido_a}}
+    <br>
+    {{form.Requisitos_de_Participacion.label}}
+    {{form.Requisitos_de_Participacion}}
+    <br>
+    {{form.Curriculum_de_los_Instructores.label}}
+    {{form.Curriculum_de_los_Instructores}}
+    <br>
+    {{form.Capacidad_de_autofinanciamiento.label}}
+    {{form.Capacidad_de_autofinanciamiento}}
+    <br>
+    <div style="visibility: hidden;"> Hola
+        {{form.responsable.label}}
+        {{form.responsable}}
+
+        
+        {{form.estatus.label}}
+        {{form.estatus}}
+
+    </div>
+
+    <input type="submit" name="Submit">
+</form>
+{{form.errors}}
+
+{% endblock %}
+
+<div style="visibility: hidden;"> Hola
